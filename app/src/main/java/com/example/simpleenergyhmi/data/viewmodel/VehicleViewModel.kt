@@ -45,7 +45,7 @@ class VehicleViewModel(
                 .collect { data ->
                     // Validate vehicle speed: reject negative, NaN, and infinite values
                     val validSpeed = data.speedKmh?.takeIf {
-                        !it.isNaN() && !it.isInfinite() && it >= 0f
+                        it.isFinite() && it >= 0f
                     }
 
                     val safeData = data.copy(
